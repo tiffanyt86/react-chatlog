@@ -1,22 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
-import ChatEntry from './components/ChatEntry';
+import ChatLog from './components/ChatLog';
 
 const App = () => {
+  const [entries, setEntries] = useState(chatMessages);
+  const updateChat = (id) => {
+    const newEntries = entries.map((entry) => {
+      if (entry.id === id) {
+        return Object.assign({}, entry, { liked: !entry.liked });
+      }
+      return entry;
+    });
+    setEntries(newEntries);
+  };
+
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>
+          Chat Between {chatMessages[0].sender} and {chatMessages[1].sender}
+        </h1>
+        <section>
+          <h2 className="widget" id="heartWidget">
+            ❤️'s
+          </h2>
+        </section>
       </header>
       <main>
-        {/* Wave 01: Render one ChatEntry component
-        Wave 02: Render ChatLog component */}
-        <ChatEntry
-          sender={chatMessages[0].sender}
-          body={chatMessages[0].body}
-          timeStamp={chatMessages[0].timeStamp}
-        />
+        <ChatLog entries={entries} updateChat={updateChat} />
       </main>
     </div>
   );
