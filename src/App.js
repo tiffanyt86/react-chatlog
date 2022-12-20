@@ -8,12 +8,22 @@ const App = () => {
   const updateChat = (id) => {
     const newEntries = entries.map((entry) => {
       if (entry.id === id) {
-        return Object.assign({}, entry, { liked: !entry.liked });
+        // same as below:
+        // return Object.assign({}, entry, { liked: !entry.liked });
+        return { ...entry, liked: !entry.liked };
       }
       return entry;
     });
     setEntries(newEntries);
   };
+
+  const calcTotalLikes = (entries) => {
+    return entries.reduce((total, entry) => {
+      return total + entry.liked;
+    }, 0);
+  };
+
+  const totalLikes = calcTotalLikes(entries);
 
   return (
     <div id="App">
@@ -23,7 +33,7 @@ const App = () => {
         </h1>
         <section>
           <h2 className="widget" id="heartWidget">
-            ❤️'s
+            {totalLikes} ❤️s
           </h2>
         </section>
       </header>
