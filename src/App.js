@@ -3,6 +3,9 @@ import './App.css';
 import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
 
+const sender1 = chatMessages[0].sender;
+const sender2 = chatMessages[1].sender;
+
 const App = () => {
   const [entries, setEntries] = useState(chatMessages);
   const updateChat = (id) => {
@@ -29,7 +32,7 @@ const App = () => {
     <div id="App">
       <header>
         <h1>
-          Chat Between {chatMessages[0].sender} and {chatMessages[1].sender}
+          Chat Between {sender1} and {sender2}
         </h1>
         <section>
           <h2 className="widget" id="heartWidget">
@@ -38,7 +41,12 @@ const App = () => {
         </section>
       </header>
       <main>
-        <ChatLog entries={entries} updateChat={updateChat} />
+        <ChatLog
+          entries={entries}
+          updateChat={updateChat}
+          sender1={sender1}
+          sender2={sender2}
+        />
       </main>
     </div>
   );
