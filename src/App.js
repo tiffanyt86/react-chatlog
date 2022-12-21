@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './App.css';
 import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
+import './App.css';
 
 const sender1 = chatMessages[0].sender;
 const sender2 = chatMessages[1].sender;
