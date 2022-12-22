@@ -20,7 +20,11 @@ const ChatLog = (props) => {
     );
   });
 
-  return <ul className="chat-log">{getChatLogJSX}</ul>;
+  return (
+    <ul className="chat-log" key={props.id}>
+      {getChatLogJSX}
+    </ul>
+  );
 };
 
 ChatLog.propTypes = {
