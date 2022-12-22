@@ -4,7 +4,7 @@ import ChatEntry from './ChatEntry';
 import './ChatLog.css';
 
 const ChatLog = (props) => {
-  const getChatLogJSX = props.entries.map((entry) => {
+  const getChatLogJSX = props.entries.map((entry, index) => {
     return (
       <ChatEntry
         key={entry.id}
@@ -21,7 +21,7 @@ const ChatLog = (props) => {
   });
 
   return (
-    <ul className="chat-log" key={props.id}>
+    <ul className="chat-log" key="key">
       {getChatLogJSX}
     </ul>
   );
