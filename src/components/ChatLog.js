@@ -7,7 +7,7 @@ const ChatLog = (props) => {
   const getChatLogJSX = props.entries.map((entry, index) => {
     return (
       <ChatEntry
-        key={entry.id}
+        key={index}
         sender={entry.sender}
         body={entry.body}
         timeStamp={entry.timeStamp}
@@ -20,11 +20,7 @@ const ChatLog = (props) => {
     );
   });
 
-  return (
-    <ul className="chat-log" key="key">
-      {getChatLogJSX}
-    </ul>
-  );
+  return <ul className="chat-log">{getChatLogJSX}</ul>;
 };
 
 ChatLog.propTypes = {
